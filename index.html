@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sestavljanka</title>
+        <style>
+            #idNavodila{
+                border: 1px solid black;
+            }
+
+            #idContainer{
+                display: grid;
+                grid-template-columns: 30% 70%;
+            }
+
+            #idContainer > div{
+                border: 1px solid black;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="idNavodila">
+            <h1>Sestavljanka</h1>
+            <h3>Navodila igre:</h3>
+            <p>
+            Sestavljanka je igra, pri kateri je cilj, da koščke slike smiselno razvrstiš v pravilno obliko.<br>
+            Koščke lahko razporejaš tako da košček z miško in klikom potegneš na drugo mesto, kjer se v bistvu koščka zamenjata.<br>
+            Igre je konec, ko so vsi koščki na pravilnem mestu.
+            </p>
+        </div>
+        <div id="idContainer">
+            <div id="idNastavitve">
+                <h2>Nastavitve</h2>
+                <hr>
+                <p>
+                    Izberi težavnost:
+                    <select name="tezavnost" id="idTezavnostSelect">
+                        <option value="4x4">4x4</option>
+                        <option value="6x6">6x6</option>
+                        <option value="8x8">8x8</option>
+                    </select>
+                </p>
+                <p>Čas igranja: <span id="idCas"></span></p>
+                <button type="button">Začni igro</button>
+            </div>
+            <div id="idIgra">
+                <h2>Puzzle</h2>
+                <hr>
+                
+            </div>
+        </div>
+    </body>
+</html>
