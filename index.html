@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Sestavljanka</title>
+        <script src="js/main.js"></script>
         <style>
             #idNavodila{
                 border: 1px solid black;
@@ -17,6 +18,16 @@
                 border: 1px solid black;
             }
 
+            #idPuzzleContainer{
+                display: grid;
+            }
+
+            #idPuzzleContainer > .koscekSlike{
+                width: 50px;
+                height: 50px;
+                border: 1px solid black;
+            }
+            
 
         </style>
     </head>
@@ -36,19 +47,22 @@
                 <hr>
                 <p>
                     Izberi težavnost:
-                    <select name="tezavnost" id="idTezavnostSelect">
-                        <option value="4x4">4x4</option>
-                        <option value="6x6">6x6</option>
-                        <option value="8x8">8x8</option>
+                    <select name="tezavnost" id="idTezavnost">
+                        <option value="4">4x4</option>
+                        <option value="6">6x6</option>
+                        <option value="8">8x8</option>
                     </select>
                 </p>
                 <p>Čas igranja: <span id="idCas"></span></p>
-                <button type="button">Začni igro</button>
+                <button type="button" onclick="UstvariSliko()">Začni igro</button>
             </div>
             <div id="idIgra">
                 <h2>Puzzle</h2>
                 <hr>
-                
+                <!-- Izris divov -->
+                <div id="idPuzzleContainer">
+
+                </div>
             </div>
         </div>
     </body>
