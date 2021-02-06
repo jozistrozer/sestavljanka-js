@@ -1,8 +1,10 @@
+// Se proži, kadar košček zagrabimo
 function Vleci(ev){
     ev.dataTransfer.setData("src", ev.target.id);
     console.log(ev.target);
 }
 
+// Se proži, kadar košček spustimo
 function Odvrzi(ev){
     ev.preventDefault();
     ev.preventDefault();
