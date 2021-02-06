@@ -24,7 +24,8 @@ function UstvariSliko(){
     // Nastavljanje spremenljivk
     var puzzleContainer = document.getElementById("idPuzzleContainer");
     var izbranaTezavnost = document.getElementById("idTezavnost").value;
-    
+    var randSlika = Math.floor(Math.random() * 5 + 1);
+    var temp = null;
     // Brisanje slik
     puzzleContainer.innerHTML = "";
     
@@ -42,9 +43,11 @@ function UstvariSliko(){
         noviDiv.setAttribute("ondrop", "Odvrzi(event)");
         noviDiv.setAttribute("ondragover", "DovoliOdvrzi(event)");
         
+        if (randSlika == 1) { temp = 1;} else {temp=0;}
+
         // Nastavljanje atribute koščkov
         slikaDiv.setAttribute("id", "img"+i);
-        slikaDiv.setAttribute("src", "slike/slika1/"+izbranaTezavnost+"x"+izbranaTezavnost+"/"+(i+1) + ".jpg");
+        slikaDiv.setAttribute("src", "slike/slika"+randSlika+"/"+izbranaTezavnost+"x"+izbranaTezavnost+"/"+(i+temp) + ".jpg");
         slikaDiv.setAttribute("width", "100px");
         slikaDiv.setAttribute("height", "100px");
         slikaDiv.setAttribute("draggable", "true");
