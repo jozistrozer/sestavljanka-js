@@ -5,18 +5,14 @@
         <title>Sestavljanka</title>
         <script src="js/main.js"></script>
         <style>
-            #idNavodila{
-                border: 1px solid black;
+            html{
+                font-family: 'Trebuchet MS', sans-serif;
             }
-
             #idContainer{
                 display: grid;
                 grid-template-columns: 50% 50%;
             }
 
-            #idContainer > div{
-                border: 1px solid black;
-            }
 
             #idPuzzleContainer{
                 display: grid;
@@ -28,6 +24,16 @@
                 border: 1px solid black;
             }
             
+            #containerSlike > img{
+                width: 200px;
+                height: 200px;
+            }
+
+            #containerSlike{
+                display: flex;
+                flex-wrap:wrap;
+                gap: 25px;
+            }
 
         </style>
     </head>
@@ -45,16 +51,24 @@
             <div id="idNastavitve">
                 <h2>Nastavitve</h2>
                 <hr>
+                <h3 id="titleSlika">Izberi svojo sliko</h3>
+                <div id="containerSlike">
+                    <img src="slike/celotne_slike/1.jpg" id="fullImg1" onclick="IzberiSliko(this)" style="border: 2px solid red">
+                    <img src="slike/celotne_slike/2.jpg" id="fullImg2" onclick="IzberiSliko(this)">
+                    <img src="slike/celotne_slike/3.jpg" id="fullImg3" onclick="IzberiSliko(this)">
+                    <img src="slike/celotne_slike/4.jpg" id="fullImg4" onclick="IzberiSliko(this)">
+                    <img src="slike/celotne_slike/5.jpg" id="fullImg5" onclick="IzberiSliko(this)">
+                </div>
                 <p>
-                    Izberi težavnost:
+                    <span id="titleTezavnost"><b>Izberi težavnost:</b></span>
                     <select name="tezavnost" id="idTezavnost">
                         <option value="4">4x4</option>
                         <option value="6">6x6</option>
                         <option value="8">8x8</option>
                     </select>
                 </p>
-                <p>Čas igranja: <span id="idCas"></span></p>
-                <button type="button" onclick="UstvariSliko()">Začni igro</button>
+                <p><b>Čas igranja: </b><span id="Cas">0</span> sek</p>
+                <button type="button" onclick="UstvariSliko()" id="buttZacniIgro">Začni igro</button>
                 
             </div>
             <div id="idIgra">
