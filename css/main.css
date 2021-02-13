@@ -1,0 +1,29 @@
+html{
+    font-family: 'Trebuchet MS', sans-serif;
+}
+#idContainer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+#idPuzzleContainer{
+    display: grid;
+}
+
+#idPuzzleContainer > .koscekSlike{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+#containerSlike > img{
+    width: 200px;
+    height: 200px;
+}
+
+#containerSlike{
+    display: flex;
+    flex-wrap:wrap;
+    gap: 25px;
+}
