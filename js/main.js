@@ -1,3 +1,8 @@
+// globalne spremenljivke
+var izbranaSlika = 1;
+var totalSekunde = 0;
+var majsko_cvetje = new Audio("glasba/majsko_cvetje.mp3");
+
 // Se proži, kadar košček zagrabimo
 function Vleci(ev){
     ev.dataTransfer.setData("src", ev.target.id);
@@ -21,7 +26,6 @@ function DovoliOdvrzi(ev){
 }
 
 function preveriKoscke(){
-    console.log("preverjam");
     var izbranaTezavnost = document.getElementById("idTezavnost").value;
     var potIzbranaTez = izbranaTezavnost*izbranaTezavnost;
     var koscki = [];
@@ -33,18 +37,31 @@ function preveriKoscke(){
     }
 
     if (koscki.toString() == urejen.toString()){
-        console.log("ZMAGA ZMAGA ZMAGA ZMGA");
         for (var k = 0; k < potIzbranaTez; k++){
             document.getElementById("img"+k).setAttribute("draggable", "false");
         }
+
+        setTimeout(function(){
+            alert("Zmagal si igro, čestitam porabil si: " + totalSekunde + " sekund");
+            location.reload();
+        }, 1000);
     }
 }
 
 function UstvariSliko(){
+    // Skrivanje slik
+    document.getElementById("containerSlike").style.display = "none";
+    document.getElementById("titleSlika").style.display = "none";
+    document.getElementById("titleTezavnost").innerHTML = "<b>Trenutno izbrana težavnost:</b>";
+    document.getElementById("idTezavnost").disabled = true;
+    document.getElementById("buttZacniIgro").disabled = true;
+
+    // Začetek glasbe
+    majsko_cvetje.play();
+
     // Nastavljanje spremenljivk
     var puzzleContainer = document.getElementById("idPuzzleContainer");
     var izbranaTezavnost = document.getElementById("idTezavnost").value;
-    var randSlika = Math.floor(Math.random() * 5 + 1);
     var temp = null;
     var potIzbranaTez = izbranaTezavnost*izbranaTezavnost;
     var izbraneStevilke = [];
@@ -67,7 +84,7 @@ function UstvariSliko(){
         noviDiv.setAttribute("ondrop", "Odvrzi(event)");
         noviDiv.setAttribute("ondragover", "DovoliOdvrzi(event)");
         
-        if (randSlika == 1) { temp = 1;} else {temp=0;}
+        if (izbranaSlika == "1") { temp = 1;} else {temp=0;}
 
         rand_num = Math.floor(Math.random() * potIzbranaTez);
         while (izbraneStevilke.includes(rand_num)){
@@ -76,7 +93,7 @@ function UstvariSliko(){
         izbraneStevilke.push(rand_num);
         // Nastavljanje atribute koščkov
         slikaDiv.setAttribute("id", "img"+rand_num);
-        slikaDiv.setAttribute("src", "slike/slika"+randSlika+"/"+izbranaTezavnost+"x"+izbranaTezavnost+"/"+(rand_num+temp) + ".jpg");
+        slikaDiv.setAttribute("src", "slike/slika"+izbranaSlika+"/"+izbranaTezavnost+"x"+izbranaTezavnost+"/"+(rand_num+temp) + ".jpg");
         
         slikaDiv.setAttribute("width", "100px");
         slikaDiv.setAttribute("height", "100px");
@@ -86,4 +103,28 @@ function UstvariSliko(){
         noviDiv.appendChild(slikaDiv);
         puzzleContainer.appendChild(noviDiv);
     }
+
+    // Merjenje časa
+    setInterval(function(){
+        ++totalSekunde;
+        document.getElementById("Cas").innerHTML = totalSekunde;
+    }, 1000);
+}
+
+
+function pretvoriSekMin(){
+    var valString = val + "";
+    if (valString.length < 2){
+        return "0" + valString;
+    } else { return valString; }
+}
+
+// Izbere sliko
+function IzberiSliko(ev){
+    for (var i = 1; i < 6; i++){
+        document.getElementById("fullImg"+i).style.border = "none";
+    }
+    document.getElementById(ev.id).style.border = "2px solid red";
+
+    izbranaSlika = (ev.id).slice(-1);
 }
